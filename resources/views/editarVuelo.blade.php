@@ -12,36 +12,30 @@
         
         <div class="row justify-content-center">
             <div class="col-md-6">
-                <h2>Crear Nuevo Vuelo</h2>
+                <h2>Editar Vuelo</h2>
                 <br>
-                <form action="{{route('agregar.vuelo.salvar')}}"  method="POST">
+                <form action="{{route('editar.vuelo.salvar',$vuelo->id)}}" method="PUT" >
                     @csrf
-
+                    
                     <div class="form-group">
                         <label for="color">Numero:</label>
-                        <input type="text" class="form-control" id="numeroVuelo" name="numeroVuelo" placeholder="CM456"  required/>
+                        <input type="text" class="form-control" value="{{$vuelo->numeroVuelo}}"  readonly/>
+                    </div>
+                    <div class="form-group">
+                        <label for="color">Fecha:</label>
+                        <input type="text" class="form-control" value="{{$replaceed = Str::replace('00:00:00','',$vuelo->fechaDeSalida)}}"  readonly/>
                     </div>
                     <div class="form-group">
                         <label for="metros">Origen</label>
-                        <input type="text"class="form-control" id="origen" name="origen" required/>
+                        <input type="text"class="form-control" id="origen" name="origen" value="{{$vuelo->origen}}" require/>
                     </div>
                     <div class="form-group">
                         <label for="tipoPropiedad">Destino:</label>
-                        <input type="text" class="form-control" required id="destino" name="destino"/>
+                        <input type="text" class="form-control" id="destino" name="destino" value="{{$vuelo->destino}}" required/>
                     </div>
-                    <div class="form-group">
-                        <label for="tipoPropiedad">Fecha Vuelo:</label>
-                        <input type="date" class="form-control" id="fechaDeSalida" name="fechaDeSalida" required/>
-                    </div>
-                    <div class="form-group">
-                        <label for="tipoPropiedad">Cantidad:</label>
-                        <input type="number" class="form-control" id="numeroAsientos" name="numeroAsientos" required/>
-                    </div>
-
-                    
                     <br>
                     <div class="form-group">
-                        <a href="{{route('mostrar.vuelos')}}" class="btn btn-warning">Volver</a>
+                        <a class="btn btn-warning">Volver</a>
                         <button type="submit" class="btn btn-success">Guardar</button>
                     </div>
                 </form>

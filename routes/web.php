@@ -26,6 +26,12 @@ Route::post('inicio/agregar/asiento/salvar',
 Route::get('inicio/editar/asientos/{id}',
 [AerolineaController::class,'editarAsiento'])->name('editar.asiento');
 
-Route::get('inicio/nuevo/vuelo',function(){
-    return view('nuevoVuelo');
-})->name('nuevo.vuelo');
+Route::get('inicio/nuevo/vuelo',
+[AerolineaController::class, 'nuevoVuelo'])->name('nuevo.vuelo');
+
+Route::post('inicio/nuevo/vuelo/salvar',
+[AerolineaController::class, 'nuevoVueloSalvar'])->name('agregar.vuelo.salvar');
+
+Route::get('inicio/editar/vuelo/{id}',[AerolineaController::class, 'getVuelo'])->name('editar.vuelo');
+
+Route::get('inicio/editar/salvar/{id}',[AerolineaController::class, 'setVuelo'])->name('editar.vuelo.salvar');

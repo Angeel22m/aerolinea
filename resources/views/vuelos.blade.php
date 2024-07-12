@@ -24,27 +24,29 @@
             </tr>
         </thead>
         <tbody>
-            
-                <tr>
-                    <td>CM385</td>
-                    <td>San Pedro Sula</td>
-                    <td>San Jose</td>
-                    <td>235</td>
-                    <td>
-                        <a>Editar</a>
-                    </td>
-                    <td>
-                        <a>Eliminar</a>
-                    </td>
-                    <td>
-                        <a>Agregar Asiento</a>
-                    </td>
-                    <td>
-                        <a>Ver Asientos</a>
-                    </td>
-                </tr>
-            
-            
+            @foreach ($vuelos as $vuelo)
+            <tr>
+                <td>{{$vuelo->numeroVuelo}}</td>
+                <td>{{$vuelo->origen}}</td>
+                <td>{{$vuelo->destino}}</td>
+                <td>{{$vuelo->numeroAsientos}}</td>
+                <td>
+                    <a href="{{route('editar.vuelo',$vuelo->id)}}">Editar</a>
+                </td>
+                <td>
+                    <a href="">Eliminar</a>
+                </td>
+                <td>
+                    <a href="">Agregar Asiento</a>
+                </td>
+                <td>
+                    <a href="">Ver Asientos</a>
+                </td>
+            </tr>
+        
+        
+            @endforeach
+               
         </tbody>
 
     </table>
